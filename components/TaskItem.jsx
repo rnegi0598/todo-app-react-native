@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Checkbox from "expo-checkbox";
+import { useDispatch } from "react-redux";
+import { updateTask } from "../store/reducers/taskReducer";
+
 const TaskItem = ({ task }) => {
   const [isSelected, setSelection] = useState(task[1]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(updateTask({ id: task[2], title: task[0], checked: isSelected }));
+  }, [isSelected]);
 
   return (
     <View style={styles.task}>
@@ -37,10 +45,10 @@ const styles = StyleSheet.create({
   },
   taskText: {
     color: "#30374F",
-    fontSize:16,
-    fontWeight:500,
-    fontFamily:'InterRegular',
-    textTransform: 'capitalize',
+    fontSize: 16,
+    fontWeight: 500,
+    fontFamily: "InterRegular",
+    textTransform: "capitalize",
   },
 });
 

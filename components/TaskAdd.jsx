@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import {
   StyleSheet,
-  Text,
   View,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
   Keyboard,
-  Platform,
 } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 import { useDispatch } from "react-redux";
@@ -26,20 +22,26 @@ const TaskAdd = () => {
     onChangeText("");
   };
   return (
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.addBtnWrapper} onPress={()=>{Keyboard.dismiss();addTaskHandler()}}>
-          <Icon name="plus" color="#98A2B3" size={32} />
-        </TouchableOpacity>
-        <View style={styles.inputWrapper}>
-          <TextInput
-            placeholder="Add Task"
-            placeholderTextColor="#ABB6C8"
-            style={styles.input}
-            onChangeText={onChangeText}
-            value={text}
-          />
-        </View>
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={styles.addBtnWrapper}
+        onPress={() => {
+          Keyboard.dismiss();
+          addTaskHandler();
+        }}
+      >
+        <Icon name="plus" color="#98A2B3" size={32} />
+      </TouchableOpacity>
+      <View style={styles.inputWrapper}>
+        <TextInput
+          placeholder="Add Task"
+          placeholderTextColor="#ABB6C8"
+          style={styles.input}
+          onChangeText={onChangeText}
+          value={text}
+        />
       </View>
+    </View>
   );
 };
 
@@ -49,6 +51,7 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     paddingHorizontal: 16,
     backgroundColor: "#F9F9FB",
+    borderRadius: 16,
   },
   addBtnWrapper: {
     marginRight: 16,

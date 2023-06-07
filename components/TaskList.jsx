@@ -1,19 +1,51 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  Image,
+} from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 import { useDispatch, useSelector } from "react-redux";
 import TaskItem from "./TaskItem";
 import TaskAdd from "./TaskAdd";
-
+import { removeAllTask } from "../store/reducers/taskReducer";
+import emptyListImage from "../assets/images/emptyList.png";
 const EmptyListMessage = () => {
   return (
-    // Flat List Item
-    <Text style={styles.emptyListStyle}>No Data Found</Text>
+    <View style={styles.emptyListStyle}>
+      <Image style={styles.emptyListStyleImage} source={emptyListImage} />
+    </View>
   );
 };
 
 const TaskList = () => {
-  
   const tasks = useSelector((state) => state.tasks.tasks);
+  const dispatch = useDispatch();
+
+  const removeAllHandler = () => {
+    Alert.alert(
+      "Confirmation",
+      "Are you sure you want to remove all tasks?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        {
+          text: "Remove",
+          style: "destructive",
+          onPress: () => {
+            dispatch(removeAllTask());
+          },
+        },
+      ],
+      { cancelable: true }
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -21,22 +53,25 @@ const TaskList = () => {
 
       <View style={styles.header}>
         <Text style={styles.headerText}>Task List</Text>
-        <View style={styles.deleteWrapper}>
-          <Icon name="delete" size={20} color="red"  />
-        </View>
+        <TouchableOpacity
+          style={styles.deleteWrapper}
+          onPress={removeAllHandler}
+        >
+          <Icon name="delete" size={20} color="red" />
+        </TouchableOpacity>
       </View>
 
       {/* task display */}
 
       <View style={styles.taskList}>
         <FlatList
+          showsVerticalScrollIndicator={false}
           scrollEnabled={true}
           data={tasks}
           renderItem={({ item }) => (
-            <TaskItem task={[item.title, item.checked]} />
+            <TaskItem task={[item.title, item.checked, item.id]} />
           )}
           keyExtractor={(item) => item.id}
-          
           ListEmptyComponent={EmptyListMessage}
         />
       </View>
@@ -67,7 +102,13 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 16,
   },
-  emptyListStyle: {},
+  emptyListStyle: {
+    alignContent: "center",
+  },
+  emptyListStyleText: {},
+  emptyListStyleImage: {
+    alignSelf: "center",
+  },
 });
 
 export default TaskList;

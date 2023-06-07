@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View ,Image} from "react-native";
-import avatarGroup from '../assets/images/AvatarGroup.png'
+import { StyleSheet, Text, View, Image } from "react-native";
+import avatarGroup from "../assets/images/AvatarGroup.png";
 const TaskDetails = () => {
   return (
     <View style={styles.container}>
@@ -21,7 +21,7 @@ const TaskDetails = () => {
         </View>
       </View>
       <View style={styles.avatars}>
-            <Image source={avatarGroup}/>
+        <Image source={avatarGroup} />
       </View>
     </View>
   );
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 500,
     color: "#111322",
-    fontFamily:'InterRegular',
+    fontFamily: "InterRegular",
   },
   details: {
     marginTop: 36,
@@ -50,24 +50,24 @@ const styles = StyleSheet.create({
     fontWeight: 500,
     fontSize: 14,
     marginBottom: 12,
-    fontFamily:'InterRegular',
+    fontFamily: "InterRegular",
   },
   detailsTitleContent: {
     color: "#1D2939",
     fontWeight: 600,
     fontSize: 20,
-    fontFamily:'InterBold',
+    fontFamily: "InterBold",
   },
   detailsDesc: {},
   detailsDescContent: {
     color: "#111322",
     fontWeight: 500,
     fontSize: 14,
-    fontFamily:'InterRegular',
+    fontFamily: "InterRegular",
   },
-  avatars:{
-    marginTop:15,
-  }
+  avatars: {
+    marginTop: 15,
+  },
 });
 
 export default TaskDetails;
