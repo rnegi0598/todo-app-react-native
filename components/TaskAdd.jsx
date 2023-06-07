@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   input: {
-    // backgroundColor: "red",
     fontSize: 16,
     height: 32,
     fontFamily: "InterRegular",

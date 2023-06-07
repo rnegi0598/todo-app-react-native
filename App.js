@@ -13,6 +13,7 @@ import {
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  
   let [fontsLoaded] = useFonts({
     InterRegular,
     InterBold,

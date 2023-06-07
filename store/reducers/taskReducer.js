@@ -23,15 +23,15 @@ const taskSlice = createSlice({
         }
         return task;
       });
-      updatedTask.sort((taskA, taskB) => {
-        if (taskA.checked && !taskB.checked) {
-          return 1; // taskA comes after taskB
-        } else if (!taskA.checked && taskB.checked) {
-          return -1; // taskA comes before taskB
-        } else {
-          return 0; // no change in order
-        }
-      });
+      // updatedTask.sort((taskA, taskB) => {
+      //   if (taskA.checked && !taskB.checked) {
+      //     return 1; // taskA comes after taskB
+      //   } else if (!taskA.checked && taskB.checked) {
+      //     return -1; // taskA comes before taskB
+      //   } else {
+      //     return 0; // no change in order
+      //   }
+      // });
       state.tasks = updatedTask;
     },
     removeTask: (state, action) => {

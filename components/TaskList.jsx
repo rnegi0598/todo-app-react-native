@@ -27,7 +27,11 @@ const TaskList = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch();
 
+  // removes all the tasks after confirmation by the user
   const removeAllHandler = () => {
+    if(tasks.length==0){
+      return ;
+    }
     Alert.alert(
       "Confirmation",
       "Are you sure you want to remove all tasks?",
