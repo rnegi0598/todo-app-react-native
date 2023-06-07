@@ -1,21 +1,23 @@
 import { StyleSheet, Text, View } from "react-native";
-
-import { useDispatch, useSelector } from "react-redux";
-
+import TaskDetails from "../components/TaskDetails";
+import TaskList from "../components/TaskList";
 const TodoScreen = () => {
-  const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.todos);
-  console.log(tasks);
+  
 
   return (
-    <View >
-      <Text>Open up App.js to start working on your app!</Text>
+    <View style={styles.container}>
+      <TaskDetails />
+      <TaskList/>
     </View>
   );
 };
 
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
+  container: {
+    flex:1,
+    paddingHorizontal: 17,
     
-})
+  },
+});
 
 export default TodoScreen;
