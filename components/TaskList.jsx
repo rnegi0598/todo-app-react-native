@@ -13,6 +13,8 @@ import TaskItem from "./TaskItem";
 import TaskAdd from "./TaskAdd";
 import { removeAllTask } from "../store/reducers/taskReducer";
 import emptyListImage from "../assets/images/emptyList.png";
+
+
 const EmptyListMessage = () => {
   return (
     <View style={styles.emptyListStyle}>
@@ -78,6 +80,7 @@ const TaskList = () => {
 
       {/*task add  */}
       <TaskAdd />
+      
     </View>
   );
 };
